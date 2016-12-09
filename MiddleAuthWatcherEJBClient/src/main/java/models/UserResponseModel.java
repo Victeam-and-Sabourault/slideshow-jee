@@ -1,9 +1,7 @@
 package models;
 
-import java.io.Serializable;
+public class UserResponseModel  {
 
-
-public class UserResponseModel  implements Serializable{
 
 	public String getLogin() {
 		return login;

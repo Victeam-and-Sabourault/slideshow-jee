@@ -53,7 +53,8 @@ public class AuthWatcherMsgDrivenEJB implements MessageListener {
 
 					UserModel checkedUser = dataContainer.checkUser(user);
 					
-					if(checkedUser != null) {						
+					if(checkedUser != null) {	
+						System.out.println("Put checkedUser on Queue");
 						sender.sendMessage(checkedUser);
 					} else {
 						sender.sendMessage("Error : Invalid user");

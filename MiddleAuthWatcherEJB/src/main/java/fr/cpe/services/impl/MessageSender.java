@@ -22,6 +22,6 @@ public class MessageSender implements MessageSenderLocal{
     }
     
     public void sendMessage(UserModel user) {
-        context.createProducer().send(topic, user.toString());
+        context.createProducer().send(topic, user);
     }
 }

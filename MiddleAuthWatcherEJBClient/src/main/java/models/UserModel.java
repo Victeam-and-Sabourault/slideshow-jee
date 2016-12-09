@@ -14,6 +14,11 @@ import javax.validation.constraints.NotNull;
 @Table(name = "users")
 public class UserModel implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2736290650177098131L;
+
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

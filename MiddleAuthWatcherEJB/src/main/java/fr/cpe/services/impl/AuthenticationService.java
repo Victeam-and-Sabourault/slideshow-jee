@@ -20,18 +20,20 @@ public class AuthenticationService implements IAuthenticationService {
 
 	public UserResponseModel checkUser(UserModel user) {
 
-		ObjectMessage msg = (ObjectMessage) user;
 		sender.sendMessage(user);
 
+		System.out.println("Wait for checkedUser from Queue");
 		Message response = receiver.receiveMessage();
-		msg = (ObjectMessage) response;
+		System.out.println("Received checkedUser from Queue");
+		ObjectMessage msg = (ObjectMessage) response;
 		UserResponseModel userResponse = new UserResponseModel();
 		
 		try {
 			if (msg.getObject() instanceof UserModel) {
-				userResponse.setLogin(((UserModel) response).getLogin());
+				UserModel usr = (UserModel) msg.getObject();
+				userResponse.setLogin(usr.getLogin());
 				userResponse.setValidAuth(true);
-				userResponse.setRole(((UserModel) response).getRole());
+				userResponse.setRole(usr.getRole());
 			} else {
 				userResponse = new UserResponseModel(user.getLogin(), false, "Unauthorized");
 			}

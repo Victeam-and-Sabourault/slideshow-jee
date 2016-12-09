@@ -15,14 +15,15 @@ import fr.cpe.services.MessageSenderQueueLocal;
 import model.DataContainer;
 import models.UserModel;
 
+// Abonnement au topic
 @MessageDriven(activationConfig = {
-		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"), 
-		@ActivationConfigProperty(propertyName = "destination", propertyValue = "java:/AuthenticationMessageQueue") })
+		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic"), 
+		@ActivationConfigProperty(propertyName = "destination", propertyValue = "java:/AuthenticationMessageTopic") })
 public class AuthWatcherMsgDrivenEJB implements MessageListener {
 	private DataContainer dataContainer;
 
 	@EJB
-	MessageSenderQueueLocal sender;
+	MessageSenderQueueLocal sender; //Instanciation de la queue pour sendmessage
 
 	public AuthWatcherMsgDrivenEJB() {
 		super();

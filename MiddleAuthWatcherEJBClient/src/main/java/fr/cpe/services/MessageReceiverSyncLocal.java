@@ -1,10 +1,9 @@
 package fr.cpe.services;
 
 import javax.ejb.Local;
-
-import models.UserModel;
+import javax.jms.Message;
 
 @Local
 public interface MessageReceiverSyncLocal {
-	UserModel receiveMessage(UserModel message);
+	Message receiveMessage();
 }

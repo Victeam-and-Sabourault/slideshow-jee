@@ -17,10 +17,7 @@ public class WatcherAuth implements IWatcherAuth {
 
 	@Inject
 	IAuthenticationService authenticationService;
-	@Inject
-	MessageSenderLocal sender;
-	@Inject
-	MessageReceiverSyncLocal receiver;
+
 
 	@Override
 	public UserResponseModel authentication(UserModel user) {

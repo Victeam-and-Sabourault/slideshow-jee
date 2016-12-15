@@ -2,7 +2,7 @@ package fr.cpe.services;
 
 import javax.ejb.Local;
 
-import models.UserModel;
+import fr.cpe.models.UserModel;
 
 @Local
 public interface MessageSenderQueueLocal {

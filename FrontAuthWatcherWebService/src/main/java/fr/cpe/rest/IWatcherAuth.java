@@ -6,8 +6,8 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import models.UserModel;
-import models.UserResponseModel;
+import fr.cpe.models.UserModel;
+import fr.cpe.models.UserResponseModel;
 
 @Path("/WatcherAuth")
 public interface IWatcherAuth {
@@ -17,5 +17,11 @@ public interface IWatcherAuth {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/")
 	UserResponseModel authentication(UserModel user);
+	
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/test")
+	UserModel authenticationTest(UserModel user);
 
 }

@@ -5,29 +5,30 @@ import java.util.Date;
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.EJB;
 import javax.ejb.MessageDriven;
+import javax.inject.Inject;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.ObjectMessage;
 import javax.jms.TextMessage;
 
+import fr.cpe.dao.IUserDAO;
+import fr.cpe.models.UserModel;
 import fr.cpe.services.MessageSenderQueueLocal;
-import model.DataContainer;
-import models.UserModel;
 
 // Abonnement au topic
 @MessageDriven(activationConfig = {
 		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Topic"), 
 		@ActivationConfigProperty(propertyName = "destination", propertyValue = "java:/AuthenticationMessageTopic") })
 public class AuthWatcherMsgDrivenEJB implements MessageListener {
-	private DataContainer dataContainer;
+	@Inject
+	private IUserDAO userDao;
 
 	@EJB
-	MessageSenderQueueLocal sender; //Instanciation de la queue pour sendmessage
+	private MessageSenderQueueLocal sender; //Instanciation de la queue pour sendmessage
 
 	public AuthWatcherMsgDrivenEJB() {
 		super();
-		dataContainer = new DataContainer();
 	}
 
 	@Override
@@ -51,7 +52,7 @@ public class AuthWatcherMsgDrivenEJB implements MessageListener {
 					System.out.println("login:" + user.getLogin());
 					System.out.println("pwd:" + user.getPwd());
 
-					UserModel checkedUser = dataContainer.checkUser(user);
+					UserModel checkedUser = userDao.checkUser(user);
 					
 					if(checkedUser != null) {	
 						System.out.println("Put checkedUser on Queue");

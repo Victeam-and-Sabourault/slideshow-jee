@@ -1,4 +1,4 @@
-package models;
+package fr.cpe.models;
 
 public class UserResponseModel  {
 

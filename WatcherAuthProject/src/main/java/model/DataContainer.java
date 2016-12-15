@@ -1,14 +1,16 @@
 package model;
 
-import models.UserModel;
+import javax.ejb.EJB;
+
+import fr.cpe.dao.IUserDAO;
+import fr.cpe.models.UserModel;
 
 public class DataContainer {
 	
-	public UserModel checkUser(UserModel user) {
-		
-		//TODO replace with check in DAO
-		UserModel validUser = new UserModel("admin", "admin", null, null, "admin");
-		
-		return validUser;
+	@EJB
+	IUserDAO userDao;
+	
+	public UserModel checkUser(UserModel user) { 
+		return userDao.checkUser(user); 
 	}
 }

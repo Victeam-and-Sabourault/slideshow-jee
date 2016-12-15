@@ -2,8 +2,8 @@ package fr.cpe.services;
 
 import javax.ejb.Local;
 
-import models.UserModel;
-import models.UserResponseModel;
+import fr.cpe.models.UserModel;
+import fr.cpe.models.UserResponseModel;
 
 @Local
 public interface IAuthenticationService {

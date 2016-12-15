@@ -23,7 +23,7 @@ public class MessageReceiverSync implements MessageReceiverSyncLocal{
 		
 		JMSConsumer consumer = context.createConsumer(queue);
 		
-		Message message = consumer.receive(1000);
+		Message message = consumer.receive(2000);
 		
 		return message;
 	}

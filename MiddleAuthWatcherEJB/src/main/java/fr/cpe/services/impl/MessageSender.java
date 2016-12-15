@@ -6,8 +6,8 @@ import javax.inject.Inject;
 import javax.jms.JMSContext;
 import javax.jms.Topic;
 
+import fr.cpe.models.UserModel;
 import fr.cpe.services.MessageSenderLocal;
-import models.UserModel;
 
 @Stateless
 public class MessageSender implements MessageSenderLocal{
